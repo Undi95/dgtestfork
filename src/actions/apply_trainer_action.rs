@@ -147,45 +147,76 @@ pub fn forecast_trainer_action(
         | CardId::A3b107EeveeBag
         | CardId::A4b308EeveeBag
         | CardId::A4b309EeveeBag => Outcomes::single_fn(eevee_bag_effect),
-        CardId::B1217FlamePatch | CardId::B1331FlamePatch => {
-            Outcomes::single_fn(flame_patch_effect)
-        }
+        CardId::B1217FlamePatch
+        | CardId::B4b369FlamePatch
+        | CardId::B4b203FlamePatch
+        | CardId::B1331FlamePatch => Outcomes::single_fn(flame_patch_effect),
         CardId::A2153Volkner | CardId::A2193Volkner => Outcomes::single_fn(volkner_effect),
-        CardId::B1225Copycat | CardId::B1270Copycat => Outcomes::single_fn(copycat_effect),
+        CardId::B1225Copycat
+        | CardId::B4b424Copycat
+        | CardId::B4b391Copycat
+        | CardId::B4b225Copycat
+        | CardId::B1270Copycat => Outcomes::single_fn(copycat_effect),
         CardId::A2b069Iono | CardId::A2b088Iono | CardId::A4b340Iono | CardId::A4b341Iono => {
             Outcomes::single_fn(iono_effect)
         }
         CardId::B1221Marlon | CardId::B1266Marlon => Outcomes::single_fn(marlon_effect),
-        CardId::B1223May | CardId::B1268May => may_effect(acting_player, state),
+        CardId::B1223May | CardId::B4b386May | CardId::B4b220May | CardId::B1268May => {
+            may_effect(acting_player, state)
+        }
         CardId::B1224Fantina | CardId::B1269Fantina => Outcomes::single_fn(fantina_effect),
-        CardId::B1226Lisia | CardId::B1271Lisia => lisia_effect(acting_player, state),
+        CardId::B1226Lisia | CardId::B4b392Lisia | CardId::B4b226Lisia | CardId::B1271Lisia => {
+            lisia_effect(acting_player, state)
+        }
         CardId::A2a073CelesticTownElder | CardId::A2a088CelesticTownElder => {
             celestic_town_elder_effect(acting_player, state)
         }
         CardId::A2a074Barry | CardId::A2a089Barry => Outcomes::single_fn(barry_effect),
         CardId::A2a075Adaman | CardId::A2a090Adaman => Outcomes::single_fn(adaman_effect),
-        CardId::B2149Diantha | CardId::B2190Diantha => Outcomes::single_fn(diantha_effect),
+        CardId::B2149Diantha
+        | CardId::B4b380Diantha
+        | CardId::B4b214Diantha
+        | CardId::B2190Diantha => Outcomes::single_fn(diantha_effect),
         CardId::B2152Piers | CardId::B2193Piers => Outcomes::single_fn(piers_effect),
         CardId::B1a066ClemontsBackpack => Outcomes::single_fn(clemonts_backpack_effect),
-        CardId::B1a068Clemont | CardId::B1a081Clemont => clemont_effect(acting_player, state),
-        CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract => {
-            quick_grow_extract_effect(acting_player, state)
-        }
-        CardId::B1a069Serena | CardId::B1a082Serena => serena_effect(acting_player, state),
+        CardId::B1a068Clemont
+        | CardId::B4b384Clemont
+        | CardId::B4b218Clemont
+        | CardId::B1a081Clemont => clemont_effect(acting_player, state),
+        CardId::B1a067QuickGrowExtract
+        | CardId::B4b367QuickGrowExtract
+        | CardId::B4b201QuickGrowExtract
+        | CardId::B1a103QuickGrowExtract => quick_grow_extract_effect(acting_player, state),
+        CardId::B1a069Serena
+        | CardId::B4b385Serena
+        | CardId::B4b219Serena
+        | CardId::B1a082Serena => serena_effect(acting_player, state),
         CardId::B2a090Nemona | CardId::B2a107Nemona => Outcomes::single_fn(nemona_effect),
-        CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven => {
-            arven_outcomes(acting_player, state)
-        }
-        CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator => {
-            electric_generator_outcomes()
-        }
+        CardId::B2a091Arven
+        | CardId::B4b423Arven
+        | CardId::B4b388Arven
+        | CardId::B4b222Arven
+        | CardId::B2a108Arven
+        | CardId::B2a115Arven => arven_outcomes(acting_player, state),
+        CardId::B2a086ElectricGenerator
+        | CardId::B4b365ElectricGenerator
+        | CardId::B4b199ElectricGenerator
+        | CardId::B2a131ElectricGenerator => electric_generator_outcomes(),
         CardId::B2a088TeamStarGrunt | CardId::B2a105TeamStarGrunt => {
             Outcomes::single_fn(team_effect)
         }
-        CardId::B2145LuckyIcePop => lucky_ice_pop_outcomes(state, acting_player),
+        CardId::B2145LuckyIcePop | CardId::B4b364LuckyIcePop | CardId::B4b198LuckyIcePop => {
+            lucky_ice_pop_outcomes(state, acting_player)
+        }
         CardId::B2b066Maintenance => Outcomes::single_fn(maintenance_effect),
-        CardId::B2b067Iris | CardId::B2b081Iris => Outcomes::single_fn(iris_effect),
-        CardId::B2b068Calem | CardId::B2b082Calem => Outcomes::single_fn(calem_effect),
+        CardId::B2b067Iris
+        | CardId::B4b421Iris
+        | CardId::B4b378Iris
+        | CardId::B4b212Iris
+        | CardId::B2b081Iris => Outcomes::single_fn(iris_effect),
+        CardId::B2b068Calem | CardId::B4b381Calem | CardId::B4b215Calem | CardId::B2b082Calem => {
+            Outcomes::single_fn(calem_effect)
+        }
         CardId::B2b065NastyNotice => Outcomes::single_fn(nasty_notice_effect),
         CardId::A3b068Hau | CardId::A3b085Hau => Outcomes::single_fn(hau_effect),
         CardId::A3142BigMalasada => Outcomes::single_fn(big_malasada_effect),
@@ -193,8 +224,13 @@ pub fn forecast_trainer_action(
         CardId::A2b072TeamRocketGrunt | CardId::A2b091TeamRocketGrunt => {
             team_rocket_grunt_outcomes()
         }
-        CardId::B3147FieldBlower => Outcomes::single_fn(field_blower_effect),
-        CardId::B3149Korrina | CardId::B3190Korrina => Outcomes::single_fn(korrina_effect),
+        CardId::B3147FieldBlower | CardId::B4b368FieldBlower | CardId::B4b202FieldBlower => {
+            Outcomes::single_fn(field_blower_effect)
+        }
+        CardId::B3149Korrina
+        | CardId::B4b383Korrina
+        | CardId::B4b217Korrina
+        | CardId::B3190Korrina => Outcomes::single_fn(korrina_effect),
         CardId::B3151Cheren | CardId::B3192Cheren => Outcomes::single_fn(cheren_effect),
         CardId::B3150Cabbie | CardId::B3191Cabbie => card_search_outcomes_with_filter_multiple(
             acting_player,
@@ -205,7 +241,10 @@ pub fn forecast_trainer_action(
         CardId::B3152ParasolLady | CardId::B3193ParasolLady => {
             parasol_lady_effect(acting_player, state)
         }
-        CardId::B3a071Juliana | CardId::B3a086Juliana => card_search_outcomes_with_filter_multiple(
+        CardId::B3a071Juliana
+        | CardId::B4b379Juliana
+        | CardId::B4b213Juliana
+        | CardId::B3a086Juliana => card_search_outcomes_with_filter_multiple(
             acting_player,
             state,
             1,
@@ -217,14 +256,26 @@ pub fn forecast_trainer_action(
         CardId::B3a073ProfessorTuro | CardId::B3a088ProfessorTuro => {
             professor_turo_effect(acting_player, state)
         }
-        CardId::B3b066Elesa | CardId::B3b083Elesa => Outcomes::single_fn(elesa_effect),
-        CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl => {
-            puppy_loving_girl_effect(acting_player, state)
+        CardId::B3b066Elesa | CardId::B4b422Elesa | CardId::B3b083Elesa => {
+            Outcomes::single_fn(elesa_effect)
         }
-        CardId::B3b068Wallace | CardId::B3b085Wallace => wallace_effect(acting_player, state),
-        CardId::B4145OrderPad => order_pad_outcomes(acting_player, state),
-        CardId::B4152Skyla | CardId::B4192Skyla => Outcomes::single_fn(skyla_effect),
-        CardId::B4153Wally | CardId::B4193Wally => Outcomes::single_fn(wally_effect),
+        CardId::B3b067PuppyLovingGirl
+        | CardId::B4b382PuppyLovingGirl
+        | CardId::B4b216PuppyLovingGirl
+        | CardId::B3b084PuppyLovingGirl => puppy_loving_girl_effect(acting_player, state),
+        CardId::B3b068Wallace
+        | CardId::B4b389Wallace
+        | CardId::B4b223Wallace
+        | CardId::B3b085Wallace => wallace_effect(acting_player, state),
+        CardId::B4145OrderPad | CardId::B4b366OrderPad | CardId::B4b200OrderPad => {
+            order_pad_outcomes(acting_player, state)
+        }
+        CardId::B4152Skyla | CardId::B4b387Skyla | CardId::B4b221Skyla | CardId::B4192Skyla => {
+            Outcomes::single_fn(skyla_effect)
+        }
+        CardId::B4153Wally | CardId::B4b390Wally | CardId::B4b224Wally | CardId::B4193Wally => {
+            Outcomes::single_fn(wally_effect)
+        }
         CardId::B4150Psychic | CardId::B4190Psychic => Outcomes::single_fn(psychic_effect),
         CardId::B4151Drayden | CardId::B4191Drayden => Outcomes::single_fn(drayden_effect),
         CardId::B4a070TeamRocketsMasterPlan
