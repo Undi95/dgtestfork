@@ -1,0 +1,45 @@
+name: Deck search (Pocket Deck Lab)
+
+on:
+  workflow_dispatch:
+    inputs:
+      lock:
+        description: 'Cartes imposées, ex "B1a 042,B1a 062" (vide = recherche libre)'
+        required: false
+        default: ''
+      gens:
+        description: 'Générations de l''algorithme génétique'
+        required: false
+        default: '30'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deck-search
+  cancel-in-progress: false
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build
+        run: cargo build --release --bin deckgym
+      - name: Search
+        env:
+          THREADS: '4'
+        run: |
+          # stop ~25 min before the job limit so results can always be committed; the pipeline resumes on next run
+          timeout 19500 python3 -I lab/search/pipeline.py --gens "${{ inputs.gens }}" --lock "${{ inputs.lock }}" || true
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "pocket-deck-lab-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/results
+          git commit -m "Deck search results ($(date -u +%Y-%m-%dT%H:%MZ))" || exit 0
+          git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"

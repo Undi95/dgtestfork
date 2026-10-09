@@ -134,7 +134,7 @@ def save_cache(force=False):
 def run_games(deck, per_opp, player='e2', seed=None):
     with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False) as f: path = f.name
     write_deck(deck, path)
-    cmd = [BIN, 'simulate', path, META, '--num', str(per_opp * len(WEIGHTS)), '--players', f'{player},{player}', '-p', '-j', '2']
+    cmd = [BIN, 'simulate', path, META, '--num', str(per_opp * len(WEIGHTS)), '--players', f'{player},{player}', '-p', '-j', os.environ.get('THREADS', '2')]
     if seed is not None: cmd += ['--seed', str(seed)]
     try:
         out = subprocess.run(cmd, capture_output=True, text=True, timeout=3600, cwd=ROOT)
@@ -209,7 +209,8 @@ def stage_A(per_opp=4):
         if not ch: continue
         d = shell(line_cards(ch), len(ch) == 3)
         if not d or not valid(d): continue
-        s, n = evaluate(d, per_opp)
+        s, n = score(d)
+        if n < per_opp * len(WEIGHTS): s, n = evaluate(d, per_opp)
         res.append({'final': f, 'deck': d, 'score': s})
         if i % 50 == 0: log(f'A {i}/{len(finals)} best={max(r["score"] for r in res):.3f}')
     res.sort(key=lambda r: -r['score'])
@@ -226,7 +227,8 @@ def stage_B(A, top=30, per_opp=6):
             poke = line_cards(c1, True) + line_cards(c2, True)
             d = shell(poke, len(c1) == 3 or len(c2) == 3)
             if not d or not valid(d): continue
-            s, n = evaluate(d, per_opp)
+            s, n = score(d)
+            if n < per_opp * len(WEIGHTS): s, n = evaluate(d, per_opp)
             res.append({'finals': [finals[i], finals[j]], 'deck': d, 'score': s})
         log(f'B {i+1}/{len(finals)} best={max([r["score"] for r in res] or [0]):.3f}')
     res.sort(key=lambda r: -r['score'])
