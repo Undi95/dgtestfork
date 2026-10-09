@@ -302,7 +302,11 @@ def parse_deck(path):
     d = []
     for l in open(path):
         m = re.match(r'(\d+) .* ([A-Z][\w-]* \d+)\s*$', l.strip())
-        if m: d += [CANON.get(sig(CARD[m.group(2)]), m.group(2))] * int(m.group(1))
+        if m:
+            # deck files use unpadded numbers ("B3a 20"), database.json pads them ("B3a 020")
+            st, num = m.group(2).split()
+            cid = f'{st} {int(num):03d}'
+            d += [CANON.get(sig(CARD[cid]), cid)] * int(m.group(1))
     return d
 
 def report(out, refs, tag):
