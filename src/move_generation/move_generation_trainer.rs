@@ -92,7 +92,9 @@ pub fn trainer_move_generation_implementation(
         CardId::A1220Misty | CardId::A1267Misty => can_play_misty(state, trainer_card),
         CardId::A1221Blaine | CardId::A1268Blaine => can_play_trainer(state, trainer_card),
         CardId::A2152Cynthia | CardId::A2192Cynthia => can_play_trainer(state, trainer_card),
-        CardId::A1224Brock | CardId::A1271Brock => can_play_trainer(state, trainer_card),
+        CardId::A1224Brock | CardId::A1271Brock => {
+            can_play_if_named_in_play(state, trainer_card, &["Golem", "Onix"])
+        }
         CardId::A2a072Irida | CardId::A2a087Irida | CardId::A4b330Irida | CardId::A4b331Irida => {
             can_play_irida(state, trainer_card)
         }
@@ -195,7 +197,9 @@ pub fn trainer_move_generation_implementation(
         CardId::B1223May | CardId::B4b386May | CardId::B4b220May | CardId::B1268May => {
             can_play_trainer(state, trainer_card)
         }
-        CardId::B1224Fantina | CardId::B1269Fantina => can_play_trainer(state, trainer_card),
+        CardId::B1224Fantina | CardId::B1269Fantina => {
+            can_play_if_named_in_play(state, trainer_card, &["Drifblim", "Mismagius"])
+        }
         CardId::B1226Lisia | CardId::B4b392Lisia | CardId::B4b226Lisia | CardId::B1271Lisia => {
             can_play_trainer(state, trainer_card)
         }
@@ -369,6 +373,23 @@ pub fn trainer_move_generation_implementation(
     }
 }
 
+/// Cards that act on one of your Pokémon chosen by name (Brock, Fantina) can't be played when
+/// none of them is in play: there is nothing to select, as with Sabrina and an empty Bench.
+fn can_play_if_named_in_play(
+    state: &State,
+    trainer_card: &TrainerCard,
+    names: &[&str],
+) -> Option<Vec<SimpleAction>> {
+    let has_target = state
+        .enumerate_in_play_pokemon(state.current_player)
+        .any(|(_, p)| names.contains(&p.get_name().as_str()));
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
 /// Lt. Surge: "Move all [L] Energy from your Benched Pokémon to your Raichu, Electrode, or
 /// Electabuzz in the Active Spot." Needs a matching Active and at least one [L] Energy on the Bench.
 fn can_play_lt_surge(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
@@ -524,6 +545,10 @@ fn can_play_tool(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Simple
 
 /// Check if a Stadium can be played (cannot play if same-named Stadium is already active)
 fn can_play_stadium(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    // Only 1 Stadium card per turn (a new one replaces the Stadium in play).
+    if state.has_played_stadium {
+        return cannot_play_trainer();
+    }
     // Cannot play same-name stadium
     if let Some(active_name) = state.get_active_stadium_name() {
         if active_name == trainer_card.name {

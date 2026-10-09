@@ -1053,6 +1053,7 @@ pub(crate) fn wrap_with_common_logic(mutation: Mutation) -> Mutation {
                     state.discard_piles[old_owner.unwrap_or(action.actor)].push(old_stadium);
                 }
                 state.remove_card_from_hand(action.actor, &card);
+                state.has_played_stadium = true;
                 state.refresh_starting_plains_bonus_all();
                 handle_knockouts(state, (action.actor, 0), false);
             } else if trainer_card.trainer_card_type == TrainerType::Tool {

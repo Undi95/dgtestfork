@@ -39,8 +39,9 @@ lab/
   mais n'a pas d'énergie au tour 1, 1 énergie / 1 supporter / 1 retraite par tour, pas d'évolution au premier tour
   (sauf talent type Évoli), main max 10, pas de défaite deck vide, statuts (poison 10, brûlure 20 + pile,
   sommeil pile, paralysie jusqu'à la fin du prochain tour, confusion pile), faiblesse +20, points 1/2/3,
-  fossile KO = 1 point, égalité à 30 tours au total.
-- 1 196 tests, 0 échec ; fuzz 36 000 parties sur des decks aléatoires, 0 crash ; audit statique : 1 bug corrigé
+  fossile KO = 1 point, égalité à 30 tours au total, 1 stade par tour (il remplace celui en jeu), pas de carte
+  jouable sans cible (Sabrina sans banc adverse, Brock sans Golem/Onix…).
+- 1 198 tests, 0 échec ; fuzz 36 000 parties sur des decks aléatoires, 0 crash ; audit statique : 1 bug corrigé
   (Pichu Crackly Toss ciblait aussi les évolués).
 - Dresseurs : les 163 cartes (82 supporters, 31 objets, 26 outils, 13 stades, 11 fossiles) relues une à une,
   texte officiel contre effet et condition de jeu. Corrigés :
@@ -50,8 +51,7 @@ lab/
   - Dragalge ex (Poison Point) et Iris (Haxorus) : réimpressions oubliées ;
   - « énergie au hasard » (Piers, Psychic, Crawdaunt) : vraiment au hasard (avant : toujours la dernière).
   Simplifications connues, sans effet sur la recherche : les cartes « regarde / remets dans l'ordre »
-  (Pokédex, Hiker, Morty, Hand Scope, Looker) ne font rien, et quelques supporters sont jouables même sans
-  cible (Brock, Blaine…), ce que le bot évite de toute façon.
+  (Pokédex, Hiker, Morty, Hand Scope, Looker) ne font rien.
 - Le bot expectiminimax cherche désormais sur un état « déterminisé » (il ne voit plus le haut de son deck ni la
   main adverse). Fidélité inchangée (RMSE 11,2 → 12,0, dans le bruit).
 

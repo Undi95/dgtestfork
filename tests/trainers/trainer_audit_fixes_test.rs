@@ -136,3 +136,47 @@ fn test_dragalge_ex_reprint_poisons_attacker() {
     };
     assert!(state.get_active(0).is_poisoned());
 }
+
+fn can_play(game: &deckgym::Game<'static>, id: CardId) -> bool {
+    let name = trainer_from_id(id).name;
+    stack_choices(game).iter().any(
+        |a| matches!(&a.action, SimpleAction::Play { trainer_card } if trainer_card.name == name),
+    )
+}
+
+/// Only 1 Stadium card can be played per turn; the second one replaces the first next turn.
+#[test]
+fn test_only_one_stadium_per_turn() {
+    let mut game = get_test_game_with_board(
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+    );
+    let mut state = game.get_state_clone();
+    state.hands[0] = vec![
+        get_card_by_enum(CardId::B2154StartingPlains),
+        get_card_by_enum(CardId::B2153TrainingArea),
+    ];
+    game.set_state(state);
+
+    assert!(can_play(&game, CardId::B2153TrainingArea));
+    play_trainer(&mut game, 0, trainer_from_id(CardId::B2154StartingPlains));
+    assert!(
+        !can_play(&game, CardId::B2153TrainingArea),
+        "a second Stadium can't be played this turn"
+    );
+}
+
+/// Brock: "attach it to Golem or Onix" can't be played without one of them in play.
+#[test]
+fn test_brock_needs_golem_or_onix() {
+    for (board, playable) in [(CardId::A1001Bulbasaur, false), (CardId::A1150Onix, true)] {
+        let mut game = get_test_game_with_board(
+            vec![PlayedCard::from_id(board)],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        );
+        let mut state = game.get_state_clone();
+        state.hands[0] = vec![get_card_by_enum(CardId::A1224Brock)];
+        game.set_state(state);
+        assert_eq!(can_play(&game, CardId::A1224Brock), playable, "{board:?}");
+    }
+}
