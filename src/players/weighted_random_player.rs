@@ -83,6 +83,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::DiscardToolFromPokemon { .. } => 5,
         SimpleAction::DiscardActiveStadium => 5,
         SimpleAction::DiscardRandomOpponentActiveEnergy => 10,
+        SimpleAction::EvolveRandomFromDeck { .. } => 10,
         SimpleAction::MoveRandomOpponentEnergyToActive { .. } => 10,
         SimpleAction::ApplyStatusToOpponentActive { .. } => 10,
         SimpleAction::ApplyStatusesToOpponentActive { .. } => 10,

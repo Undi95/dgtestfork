@@ -702,18 +702,15 @@ fn can_play_misty(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Simpl
 
 /// Check if Koga can be played (requires active pokemon to be Weezing or Muk)
 fn can_play_koga(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
-    let active_pokemon = &state.maybe_get_active(state.current_player);
-    if let Some(played_card) = active_pokemon {
-        let card_id =
-            CardId::from_card_id(played_card.get_id().as_str()).expect("CardId should be known");
-        match card_id {
-            CardId::A1177Weezing | CardId::A1243Weezing | CardId::A1175Muk => {
-                return can_play_trainer(state, trainer_card);
-            }
-            _ => {}
-        }
+    // "Put your Muk or Weezing in the Active Spot into your hand." Any print with that name.
+    let active_is_target = state
+        .maybe_get_active(state.current_player)
+        .is_some_and(|p| matches!(p.get_name().as_str(), "Muk" | "Weezing"));
+    if active_is_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
     }
-    cannot_play_trainer()
 }
 
 /// Check if Sabrina can be played (requires opponent to have benched pokemon)

@@ -42,6 +42,9 @@ fn test_wallace_evolves_low_hp_water_pokemon_from_deck() {
         is_stack: false,
     };
     game.apply_action(&play_action);
+    // The player chooses the target, then the evolution is drawn from the deck.
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    game.apply_action(&choices[0]);
 
     let state = game.get_state_clone();
     let active = state.in_play_pokemon[0][0]
@@ -86,6 +89,9 @@ fn test_wallace_can_evolve_pokemon_played_this_turn() {
         is_stack: false,
     };
     game.apply_action(&play_action);
+    // The player chooses the target, then the evolution is drawn from the deck.
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    game.apply_action(&choices[0]);
 
     let state = game.get_state_clone();
     let active = state.in_play_pokemon[0][0]

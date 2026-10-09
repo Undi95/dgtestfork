@@ -771,15 +771,8 @@ fn is_iris_bonus_active(
     }
     state.in_play_pokemon[attacking_ref.0][attacking_ref.1]
         .as_ref()
-        .map(|attacker| {
-            matches!(
-                CardId::from_card_id(match &attacker.card {
-                    Card::Pokemon(p) => p.id.as_str(),
-                    Card::Trainer(t) => t.id.as_str(),
-                }),
-                Some(CardId::B2b056Haxorus | CardId::B2b110Haxorus | CardId::PB045Haxorus)
-            )
-        })
+        // Iris: "...an attack used by your Haxorus" -- any print named Haxorus.
+        .map(|attacker| attacker.get_name() == "Haxorus")
         .unwrap_or(false)
 }
 

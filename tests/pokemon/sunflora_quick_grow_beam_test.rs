@@ -52,6 +52,9 @@ fn test_quick_grow_extract_evolves_from_deck() {
     };
 
     game.apply_action(&play_extract);
+    // The player chooses the target, then the evolution is drawn from the deck.
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    game.apply_action(&choices[0]);
     let state = game.get_state_clone();
 
     // Verify that Bulbasaur evolved into Ivysaur

@@ -28,6 +28,7 @@ lab/
   tools/validate.py       compare le simulateur aux vrais matchups : python3 lab/tools/validate.py e3 100
   tools/wire_reprints.py  rebranche les réimpressions de dresseurs non implémentées
   tools/audit_effects.py  audit statique texte des cartes <-> code (montants, qualificatifs) : à relancer à chaque extension
+  tools/audit_reprints.py logique qui cite des cartes par numéro mais oublie des impressions de la même carte
   tools/fuzz.py           decks aléatoires de tout le pool les uns contre les autres, détecte les crashs
   search/pipeline.py      recherche de decks (voir l'en-tête du fichier), lancée par le workflow « Deck search »
 ```
@@ -39,8 +40,18 @@ lab/
   (sauf talent type Évoli), main max 10, pas de défaite deck vide, statuts (poison 10, brûlure 20 + pile,
   sommeil pile, paralysie jusqu'à la fin du prochain tour, confusion pile), faiblesse +20, points 1/2/3,
   fossile KO = 1 point, égalité à 30 tours au total.
-- 1 192 tests, 0 échec ; fuzz 36 000 parties sur des decks aléatoires, 0 crash ; audit statique : 1 bug corrigé
+- 1 196 tests, 0 échec ; fuzz 36 000 parties sur des decks aléatoires, 0 crash ; audit statique : 1 bug corrigé
   (Pichu Crackly Toss ciblait aussi les évolués).
+- Dresseurs : les 163 cartes (82 supporters, 31 objets, 26 outils, 13 stades, 11 fossiles) relues une à une,
+  texte officiel contre effet et condition de jeu. Corrigés :
+  - Quick-Grow Extract et Wallace : le joueur choisit la cible (avant : cible tirée au hasard) ;
+  - Mythical Slab : prend les Pokémon [P] (avant : n'importe quel Pokémon de base) ;
+  - Koga : marche sur toutes les impressions de Muk / Weezing (avant : 3 numéros seulement) ;
+  - Dragalge ex (Poison Point) et Iris (Haxorus) : réimpressions oubliées ;
+  - « énergie au hasard » (Piers, Psychic, Crawdaunt) : vraiment au hasard (avant : toujours la dernière).
+  Simplifications connues, sans effet sur la recherche : les cartes « regarde / remets dans l'ordre »
+  (Pokédex, Hiker, Morty, Hand Scope, Looker) ne font rien, et quelques supporters sont jouables même sans
+  cible (Brock, Blaine…), ce que le bot évite de toute façon.
 - Le bot expectiminimax cherche désormais sur un état « déterminisé » (il ne voit plus le haut de son deck ni la
   main adverse). Fidélité inchangée (RMSE 11,2 → 12,0, dans le bruit).
 

@@ -293,6 +293,10 @@ fn forecast_action_unwatched(state: &State, action: &Action) -> Outcomes {
         SimpleAction::ShuffleOpponentSupporter { supporter_card } => {
             forecast_shuffle_opponent_supporter(action.actor, supporter_card)
         }
+        SimpleAction::EvolveRandomFromDeck {
+            in_play_idx,
+            energy_type,
+        } => forecast_evolve_random_from_deck(state, action.actor, *in_play_idx, *energy_type),
         SimpleAction::ShuffleSelfAndAttachmentsIntoDeck { in_play_idx } => {
             forecast_shuffle_self_and_attachments_into_deck(action.actor, *in_play_idx)
         }
@@ -594,15 +598,17 @@ fn apply_deterministic_action(rng: &mut StdRng, state: &mut State, action: &Acti
         }
         SimpleAction::DiscardRandomOpponentActiveEnergy => {
             let opponent = (action.actor + 1) % 2;
-            if let Some(energy) = state.get_active(opponent).attached_energy.last().copied() {
+            let energies = &state.get_active(opponent).attached_energy;
+            if let Some(energy) =
+                (!energies.is_empty()).then(|| energies[rng.gen_range(0..energies.len())])
+            {
                 state.discard_from_active(opponent, &[energy]);
             }
         }
         SimpleAction::MoveRandomOpponentEnergyToActive { from_in_play_idx } => {
             let opponent = (action.actor + 1) % 2;
-            // NOTE: Using the last energy instead of a random one to avoid expanding the game
-            // tree, mirroring DiscardRandomOpponentActiveEnergy and Piers.
-            apply_move_last_energy(state, opponent, *from_in_play_idx, 0);
+            // Sampled with the shared rng inside the mutation, so the game tree doesn't grow.
+            apply_move_random_energy(rng, state, opponent, *from_in_play_idx, 0);
         }
         SimpleAction::ApplyStatusToOpponentActive { condition } => {
             let opponent = (action.actor + 1) % 2;
@@ -737,10 +743,17 @@ fn apply_attach_tool(state: &mut State, actor: usize, in_play_idx: usize, tool_c
 
 /// Moves 1 Energy from `from_idx` to `to_idx` within `player`'s own board, without the caller
 /// having to know which Energy types are attached.
-fn apply_move_last_energy(state: &mut State, player: usize, from_idx: usize, to_idx: usize) {
+fn apply_move_random_energy(
+    rng: &mut StdRng,
+    state: &mut State,
+    player: usize,
+    from_idx: usize,
+    to_idx: usize,
+) {
     let energy = state.in_play_pokemon[player][from_idx]
         .as_ref()
-        .and_then(|pokemon| pokemon.attached_energy.last().copied());
+        .filter(|pokemon| !pokemon.attached_energy.is_empty())
+        .map(|pokemon| pokemon.attached_energy[rng.gen_range(0..pokemon.attached_energy.len())]);
     if let Some(energy) = energy {
         apply_move_energy(state, player, from_idx, to_idx, energy, 1);
     }
@@ -1347,6 +1360,44 @@ fn forecast_shuffle_own_cards_into_deck(acting_player: usize, cards: &[Card]) ->
             cards_to_shuffle
         );
     })
+}
+
+/// One equally likely outcome per matching copy in the deck (two copies of the same card are
+/// twice as likely), each evolving the chosen Pokémon from the deck and shuffling.
+fn forecast_evolve_random_from_deck(
+    state: &State,
+    actor: usize,
+    in_play_idx: usize,
+    energy_type: EnergyType,
+) -> Outcomes {
+    let candidates: Vec<Card> = state.in_play_pokemon[actor][in_play_idx]
+        .as_ref()
+        .map(|target| {
+            state.decks[actor]
+                .cards
+                .iter()
+                .filter(|card| {
+                    matches!(card, Card::Pokemon(p) if p.energy_type == energy_type)
+                        && target.card.can_evolve_into(card)
+                })
+                .cloned()
+                .collect()
+        })
+        .unwrap_or_default();
+    if candidates.is_empty() {
+        return Outcomes::single_fn(|rng, state, action| {
+            state.decks[action.actor].shuffle(false, rng);
+        });
+    }
+    let probabilities = vec![1.0 / candidates.len() as f64; candidates.len()];
+    let mut outcomes: Mutations = vec![];
+    for evolution in candidates {
+        outcomes.push(Box::new(move |rng, state, action| {
+            apply_evolve(action.actor, state, &evolution, in_play_idx, true);
+            state.decks[action.actor].shuffle(false, rng);
+        }));
+    }
+    Outcomes::from_parts(probabilities, outcomes)
 }
 
 fn forecast_shuffle_opponent_supporter(acting_player: usize, supporter_card: &Card) -> Outcomes {

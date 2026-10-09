@@ -58,6 +58,8 @@ mod team_rockets_master_plan_test;
 mod team_rockets_researcher_test;
 #[path = "trainers/team_rockets_thieving_machine_test.rs"]
 mod team_rockets_thieving_machine_test;
+#[path = "trainers/trainer_audit_fixes_test.rs"]
+mod trainer_audit_fixes_test;
 #[path = "trainers/volkner_test.rs"]
 mod volkner_test;
 #[path = "trainers/wallace_test.rs"]

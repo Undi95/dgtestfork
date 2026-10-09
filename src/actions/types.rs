@@ -224,6 +224,12 @@ pub enum SimpleAction {
     DiscardActiveStadium,
     /// Crawdaunt's Unruly Claw: discard a random Energy from the opponent's Active Pokémon
     DiscardRandomOpponentActiveEnergy,
+    /// Quick-Grow Extract / Wallace: the player chose `in_play_idx`; evolve it into a random
+    /// `energy_type` card from the deck that evolves from it.
+    EvolveRandomFromDeck {
+        in_play_idx: usize,
+        energy_type: EnergyType,
+    },
     /// Psychic (Supporter): move a random Energy from one of the opponent's Benched Pokémon to
     /// the opponent's Active Pokémon.
     MoveRandomOpponentEnergyToActive {
@@ -532,6 +538,10 @@ impl fmt::Display for SimpleAction {
                 write!(f, "BenchOpponentPokemonFromDiscard({card})")
             }
             SimpleAction::ShuffleOwnDeck => write!(f, "ShuffleOwnDeck"),
+            SimpleAction::EvolveRandomFromDeck {
+                in_play_idx,
+                energy_type,
+            } => write!(f, "EvolveRandomFromDeck({in_play_idx}, {energy_type})"),
             SimpleAction::ShuffleRandomOwnHandCardIntoDeck => {
                 write!(f, "ShuffleRandomOwnHandCardIntoDeck")
             }
