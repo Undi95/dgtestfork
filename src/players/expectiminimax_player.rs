@@ -1,5 +1,6 @@
 use log::{trace, LevelFilter};
 use rand::rngs::StdRng;
+use rand::seq::SliceRandom;
 use std::fmt::Debug;
 use std::fmt::Write;
 use std::vec;
@@ -42,6 +43,10 @@ impl Player for ExpectiMiniMaxPlayer {
         possible_actions: &[Action],
     ) -> Action {
         let myself = possible_actions[0].actor;
+        // Search on a state that only keeps what this player can know, so lookahead can't peek at
+        // the real deck order or the opponent's hand.
+        let determinized = determinize(state, myself, rng);
+        let state = &determinized;
 
         // Create a tree for debugging purposes
         let mut root = DebugStateNode {
@@ -106,6 +111,26 @@ impl Player for ExpectiMiniMaxPlayer {
     fn get_deck(&self) -> Deck {
         self.deck.clone()
     }
+}
+
+/// Copy of `state` with the hidden information resampled from `myself`'s point of view:
+/// both decks are reshuffled (nobody knows the order) and the opponent's hand is redealt from
+/// their hand + deck (only its size is known). Mid-effect choices (non-empty stack) can name
+/// specific cards from a hand or the top of a deck, so those are searched on the real state.
+pub(crate) fn determinize(state: &State, myself: usize, rng: &mut StdRng) -> State {
+    let mut s = state.clone();
+    if !s.move_generation_stack.is_empty() || s.turn_count == 0 {
+        return s;
+    }
+    let opponent = (myself + 1) % 2;
+    s.decks[myself].cards.shuffle(rng);
+    let hand_size = s.hands[opponent].len();
+    let mut unknown: Vec<_> = s.hands[opponent].drain(..).collect();
+    unknown.append(&mut s.decks[opponent].cards);
+    unknown.shuffle(rng);
+    s.decks[opponent].cards = unknown.split_off(hand_size);
+    s.hands[opponent] = unknown;
+    s
 }
 
 fn expected_value_function(
@@ -323,5 +348,51 @@ fn generate_dot_recursive(
                 myself,
             );
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use rand::SeedableRng;
+
+    use super::*;
+    use crate::test_support::get_initialized_game;
+
+    fn sorted_ids(cards: &[crate::models::Card]) -> Vec<String> {
+        let mut ids: Vec<String> = cards.iter().map(|c| c.get_id()).collect();
+        ids.sort();
+        ids
+    }
+
+    #[test]
+    fn test_determinize_hides_deck_order_and_opponent_hand() {
+        let game = get_initialized_game(7);
+        let state = game.get_state_clone();
+        assert!(state.move_generation_stack.is_empty());
+        let me = state.current_player;
+        let opp = (me + 1) % 2;
+        let mut rng = StdRng::seed_from_u64(1);
+
+        let mut changed_view = false;
+        for _ in 0..20 {
+            let s = determinize(&state, me, &mut rng);
+            // What I know is untouched: my hand, the board, discard piles.
+            assert_eq!(s.hands[me], state.hands[me]);
+            assert_eq!(s.in_play_pokemon, state.in_play_pokemon);
+            // Opponent keeps the same hand size and the same cards overall (hand + deck).
+            assert_eq!(s.hands[opp].len(), state.hands[opp].len());
+            let mut before = state.hands[opp].clone();
+            before.extend(state.decks[opp].cards.iter().cloned());
+            let mut after = s.hands[opp].clone();
+            after.extend(s.decks[opp].cards.iter().cloned());
+            assert_eq!(sorted_ids(&before), sorted_ids(&after));
+            assert_eq!(
+                sorted_ids(&s.decks[me].cards),
+                sorted_ids(&state.decks[me].cards)
+            );
+            changed_view |=
+                s.hands[opp] != state.hands[opp] || s.decks[me].cards != state.decks[me].cards;
+        }
+        assert!(changed_view, "hidden information should be resampled");
     }
 }
