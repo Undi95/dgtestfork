@@ -27,7 +27,22 @@ lab/
   decks/           decks expérimentaux
   tools/validate.py       compare le simulateur aux vrais matchups : python3 lab/tools/validate.py e3 100
   tools/wire_reprints.py  rebranche les réimpressions de dresseurs non implémentées
+  tools/audit_effects.py  audit statique texte des cartes <-> code (montants, qualificatifs) : à relancer à chaque extension
+  tools/fuzz.py           decks aléatoires de tout le pool les uns contre les autres, détecte les crashs
+  search/pipeline.py      recherche de decks (voir l'en-tête du fichier), lancée par le workflow « Deck search »
 ```
+
+## Audit du moteur (9 octobre 2026)
+
+- Règles vérifiées dans le code : main de départ (5 cartes, 1 Pokémon de base garanti), le premier joueur pioche
+  mais n'a pas d'énergie au tour 1, 1 énergie / 1 supporter / 1 retraite par tour, pas d'évolution au premier tour
+  (sauf talent type Évoli), main max 10, pas de défaite deck vide, statuts (poison 10, brûlure 20 + pile,
+  sommeil pile, paralysie jusqu'à la fin du prochain tour, confusion pile), faiblesse +20, points 1/2/3,
+  fossile KO = 1 point, égalité à 30 tours au total.
+- 1 192 tests, 0 échec ; fuzz 36 000 parties sur des decks aléatoires, 0 crash ; audit statique : 1 bug corrigé
+  (Pichu Crackly Toss ciblait aussi les évolués).
+- Le bot expectiminimax cherche désormais sur un état « déterminisé » (il ne voit plus le haut de son deck ni la
+  main adverse). Fidélité inchangée (RMSE 11,2 → 12,0, dans le bruit).
 
 ## Feuille de route
 
