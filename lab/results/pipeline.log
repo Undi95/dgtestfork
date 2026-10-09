@@ -1,0 +1,129 @@
+17:24:21 A: 960 lignées
+17:24:23 A 0/960 best=0.000
+17:25:50 A 50/960 best=0.555
+17:27:19 A 100/960 best=0.555
+17:28:45 A 150/960 best=0.555
+17:30:08 A 200/960 best=0.601
+17:31:44 A 250/960 best=0.698
+17:33:15 A 300/960 best=0.698
+17:34:44 A 350/960 best=0.698
+17:36:14 A 400/960 best=0.698
+17:37:40 A 450/960 best=0.701
+17:39:03 A 500/960 best=0.701
+17:40:29 A 550/960 best=0.777
+17:41:56 A 600/960 best=0.777
+17:43:17 A 650/960 best=0.777
+17:44:45 A 700/960 best=0.777
+17:46:12 A 750/960 best=0.777
+17:47:42 A 800/960 best=0.793
+17:49:13 A 850/960 best=0.793
+17:50:41 A 900/960 best=0.793
+17:52:11 A 950/960 best=0.793
+17:52:28 A terminé (28 min) top: Flutter Mane ex, Corviknight ex, Tauros ex, Ceruledge ex, Corviknight, Crobat ex, Beedrill ex, Mega Sceptile ex
+17:54:23 B 1/30 best=0.726
+17:56:07 B 2/30 best=0.726
+17:57:36 B 3/30 best=0.847
+17:59:12 B 4/30 best=0.882
+18:00:44 B 5/30 best=0.882
+18:02:09 B 6/30 best=0.882
+18:03:36 B 7/30 best=0.882
+18:05:03 B 8/30 best=0.882
+18:06:19 B 9/30 best=0.908
+18:07:31 B 10/30 best=0.908
+18:08:46 B 11/30 best=0.908
+18:09:55 B 12/30 best=0.908
+18:11:02 B 13/30 best=0.908
+18:12:06 B 14/30 best=0.908
+18:13:03 B 15/30 best=0.908
+18:13:53 B 16/30 best=0.908
+18:14:41 B 17/30 best=0.908
+18:15:29 B 18/30 best=0.908
+18:16:15 B 19/30 best=0.908
+18:16:55 B 20/30 best=0.908
+18:17:29 B 21/30 best=0.908
+18:18:03 B 22/30 best=0.908
+18:18:29 B 23/30 best=0.908
+18:18:51 B 24/30 best=0.908
+18:19:12 B 25/30 best=0.908
+18:19:27 B 26/30 best=0.908
+18:19:38 B 27/30 best=0.908
+18:19:47 B 28/30 best=0.908
+18:19:51 B 29/30 best=0.908
+18:19:51 B 30/30 best=0.908
+18:19:51 B terminé (56 min) top: Greninja ex + Alolan Ninetales ex | Mega Blaziken ex + Terapagos ex | Ceruledge ex + Mega Sharpedo ex | Mega Absol ex + Talonflame | Tauros ex + Alolan Ninetales ex
+18:19:51 F: terrain = Alolan Ninetales ex + Greninja ex | Mega Blaziken ex + Terapagos ex | Ceruledge ex + Mega Sharpedo ex | Mega Absol ex + Talonflame | Alolan Ninetales ex + Tauros ex | Great Tusk + Mega Lopunny ex | Crobat ex + Terapagos ex | Flutter Mane ex | Corviknight ex | Tauros ex
+18:33:00 C gen 1/25 best=0.879 (méta 0.824, terrain 0.933, 162 parties) [Alolan Ninetales ex + Greninja ex] Water | 2xFroakie, 2xGreninja ex, 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xRare Candy, 2xProfessor's Research, 2xPoké Ball, 1xFrogadier, 1xCopycat, 1xCyrus, 1xSabrina, 1xGiant Cape, 1xX Speed
+18:33:00 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Beedrill ex | Ceruledge ex + Flutter Mane ex | Crobat ex + Terapagos ex | Flareon ex + Gengar ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Absol ex + Terapagos ex | Mega Sharpedo ex | Mega Sharpedo ex + Terapagos ex | Tauros ex
+18:41:54 C gen 2/25 best=0.769 (méta 0.739, terrain 0.800, 216 parties) [Alolan Ninetales ex + Greninja ex] Water | 2xFroakie, 2xGreninja ex, 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xRare Candy, 2xProfessor's Research, 2xPoké Ball, 1xFrogadier, 1xCopycat, 1xCyrus, 1xSabrina, 1xGiant Cape, 1xX Speed
+18:41:54 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Beedrill ex | Ceruledge ex + Flutter Mane ex | Crobat ex + Terapagos ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Absol ex + Terapagos ex | Mega Sharpedo ex + Terapagos ex | Tauros ex
+18:50:29 C gen 3/25 best=0.883 (méta 0.865, terrain 0.900, 108 parties) [Beedrill ex] Grass | 2xWeedle, 2xKakuna, 2xBeedrill ex, 2xRare Candy, 2xProfessor's Research, 2xPoké Ball, 1xCopycat, 1xCyrus, 1xSabrina, 1xGiant Cape, 1xX Speed, 1xAncient Booster Energy Capsule, 1xRed, 1xIris
+18:50:29 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Beedrill ex | Ceruledge ex + Flutter Mane ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Luxray + Tauros ex | Mega Absol ex + Terapagos ex | Mega Sharpedo ex + Terapagos ex | Tauros ex
+18:59:43 C gen 4/25 best=0.827 (méta 0.788, terrain 0.867, 162 parties) [Beedrill ex] Grass | 2xWeedle, 2xKakuna, 2xBeedrill ex, 2xRare Candy, 2xProfessor's Research, 2xPoké Ball, 1xCopycat, 1xCyrus, 1xSabrina, 1xGiant Cape, 1xX Speed, 1xAncient Booster Energy Capsule, 1xRed, 1xIris
+18:59:43 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Alolan Ninetales ex + Toucannon | Beedrill ex | Ceruledge ex + Flutter Mane ex | Dodrio + Mega Lopunny ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Absol ex + Terapagos ex | Mega Sharpedo ex + Terapagos ex | Tauros ex
+19:08:25 C gen 5/25 best=0.728 (méta 0.689, terrain 0.767, 162 parties) [Alolan Ninetales ex + Toucannon] Water | 2xPikipek, 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xTrumbeak, 2xToucannon, 1xTauros ex, 1xCopycat, 1xPoké Ball, 1xCyrus, 1xPokémon Center Lady, 1xRare Candy, 1xSilver, 1xRed, 1xSabrina, 1xGiant Cape
+19:08:25 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Alolan Ninetales ex + Toucannon | Beedrill ex | Dodrio + Mega Lopunny ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Absol ex + Terapagos ex | Mega Lopunny ex | Mega Sharpedo ex + Terapagos ex | Tauros ex
+19:16:40 C gen 6/25 best=0.851 (méta 0.801, terrain 0.900, 108 parties) [Mega Sharpedo ex + Terapagos ex] Water | 2xCarvanha, 2xMega Sharpedo ex, 2xProfessor's Research, 2xRare Candy, 2xPoké Ball, 2xCopycat, 2xGiant Cape, 2xCyrus, 1xTerapagos ex, 1xSilver, 1xSabrina, 1xX Speed
+19:16:40 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Alolan Ninetales ex + Toucannon | Beedrill ex | Dodrio + Mega Lopunny ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Lopunny ex + Shaymin | Mega Sharpedo ex + Terapagos ex | Tauros ex
+19:25:23 C gen 7/25 best=0.958 (méta 0.916, terrain 1.000, 108 parties) [Alolan Ninetales ex + Greninja ex] Water | 2xFroakie, 2xFrogadier, 2xGreninja ex, 2xAlolan Ninetales ex, 2xRare Candy, 2xProfessor's Research, 2xPoké Ball, 1xAlolan Vulpix, 1xCopycat, 1xCyrus, 1xSabrina, 1xGiant Cape, 1xX Speed
+19:25:23 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Alolan Ninetales ex + Toucannon | Beedrill ex | Dodrio + Mega Lopunny ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Sharpedo ex | Mega Sharpedo ex + Terapagos ex | Tauros ex
+19:33:26 C gen 8/25 best=0.833 (méta 0.834, terrain 0.833, 162 parties) [Alolan Ninetales ex + Greninja ex] Water | 2xFroakie, 2xFrogadier, 2xGreninja ex, 2xAlolan Ninetales ex, 2xRare Candy, 2xProfessor's Research, 2xPoké Ball, 1xAlolan Vulpix, 1xCopycat, 1xCyrus, 1xSabrina, 1xGiant Cape, 1xX Speed
+19:33:26 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Alolan Ninetales ex + Toucannon | Beedrill ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Sharpedo ex | Mega Sharpedo ex + Terapagos ex | Tapu Koko ex | Tauros ex
+19:41:38 C gen 9/25 best=0.860 (méta 0.721, terrain 1.000, 108 parties) [Beedrill ex] Grass | 2xWeedle, 2xKakuna, 2xBeedrill ex, 2xProfessor's Research, 2xPoké Ball, 2xSabrina, 2xRare Candy, 2xCopycat, 1xX Speed, 1xCyrus, 1xGiant Cape, 1xIris
+19:41:38 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Beedrill ex | Farigiraf + Terapagos ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Mega Sharpedo ex | Mega Sharpedo ex + Terapagos ex | Tapu Koko ex | Tauros ex
+19:50:08 C gen 10/25 best=0.748 (méta 0.662, terrain 0.833, 162 parties) [Beedrill ex] Grass | 2xWeedle, 2xKakuna, 2xBeedrill ex, 2xProfessor's Research, 2xPoké Ball, 2xSabrina, 2xRare Candy, 2xCopycat, 1xX Speed, 1xCyrus, 1xGiant Cape, 1xIris
+19:50:08 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Beedrill ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Magnezone + Tapu Koko ex | Mega Sharpedo ex | Mega Sharpedo ex + Terapagos ex | Tapu Koko ex | Tauros ex
+19:58:22 C gen 11/25 best=0.688 (méta 0.777, terrain 0.600, 108 parties) [Alolan Ninetales ex + Greninja ex] Water | 2xFroakie, 2xFrogadier, 2xGreninja ex, 2xAlolan Ninetales ex, 2xRare Candy, 2xProfessor's Research, 2xPoké Ball, 1xAlolan Vulpix, 1xCopycat, 1xCelestic Town Elder, 1xSabrina, 1xGiant Cape, 1xX Speed
+19:58:22 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Magnezone + Tapu Koko ex | Mega Sharpedo ex + Terapagos ex | Ralts + Tauros ex | Tapu Koko ex | Tauros ex
+20:06:54 C gen 12/25 best=0.834 (méta 0.668, terrain 1.000, 108 parties) [Magnezone + Tapu Koko ex] Lightning | 2xTapu Koko ex, 2xMagnezone, 2xMagnemite, 2xGiant Cape, 2xCopycat, 2xRare Candy, 1xBig Malasada, 1xMagneton, 1xSilver, 1xProfessor's Research, 1xX Speed, 1xCyrus, 1xSabrina, 1xPoké Ball
+20:06:54 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Electrike + Tapu Koko ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Magnezone + Tapu Koko ex | Mega Sharpedo ex + Terapagos ex | Tapu Koko ex | Tauros ex
+20:15:32 C gen 13/25 best=0.717 (méta 0.501, terrain 0.933, 162 parties) [Magnezone + Tapu Koko ex] Lightning | 2xTapu Koko ex, 2xMagnezone, 2xMagnemite, 2xMagneton, 2xProfessor's Research, 2xRare Candy, 2xSabrina, 2xPoké Ball, 1xGiant Cape, 1xCyrus, 1xCopycat, 1xX Speed
+20:15:32 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Dondozo + Tauros ex | Electrike + Tapu Koko ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Magnezone + Tapu Koko ex | Mega Sharpedo ex + Terapagos ex | Tapu Koko ex | Tauros ex
+20:24:09 C gen 14/25 best=0.850 (méta 0.700, terrain 1.000, 108 parties) [Rotom ex + Tapu Koko ex] Lightning | 2xTapu Koko ex, 2xLucky Ice Pop, 2xProfessor's Research, 2xGiant Cape, 2xCopycat, 2xPoké Ball, 1xCyrus, 1xSabrina, 1xRed, 1xPokémon Center Lady, 1xPotion, 1xLeaf, 1xRotom ex, 1xX Speed
+20:24:09 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Electrike + Tapu Koko ex | Flutter Mane ex | Great Tusk + Mega Lopunny ex | Magnezone + Tapu Koko ex | Mega Sharpedo ex + Terapagos ex | Rotom ex + Tapu Koko ex | Tapu Koko ex | Tauros ex
+20:33:02 C gen 15/25 best=0.815 (méta 0.729, terrain 0.900, 108 parties) [Tapu Koko ex] Lightning | 2xTapu Koko ex, 2xLucky Ice Pop, 2xGiant Cape, 2xProfessor's Research, 2xCopycat, 2xPoké Ball, 2xCyrus, 1xX Speed, 1xVolkner, 1xGiovanni, 1xSabrina, 1xPotion, 1xPokémon Center Lady
+20:33:02 C   archétypes vivants: Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Electrike + Tapu Koko ex | Flutter Mane ex | Magnezone + Tapu Koko ex | Mega Sharpedo ex + Terapagos ex | Rotom ex + Tapu Koko ex | Tapu Koko ex | Tauros ex
+20:42:36 C gen 16/25 best=0.764 (méta 0.627, terrain 0.900, 108 parties) [Alolan Ninetales ex + Tauros ex] Water | 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xHand Scope, 2xGiant Cape, 1xTauros ex, 1xCopycat, 1xPotion, 1xRed, 1xTeam Star Grunt, 1xGiovanni, 1xLucky Ice Pop, 1xCyrus, 1xProfessor's Research, 1xX Speed, 1xBlaine, 1xDitto
+20:42:36 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Chatot + Tapu Koko ex | Electrike + Tapu Koko ex | Heracross + Magnezone | Magnezone + Tapu Koko ex | Mega Sharpedo ex + Terapagos ex | Rotom ex + Tapu Koko ex | Tapu Koko ex | Tauros ex
+20:52:42 C gen 17/25 best=0.764 (méta 0.652, terrain 0.875, 216 parties) [Tapu Koko ex] Lightning | 2xTapu Koko ex, 2xLucky Ice Pop, 2xGiant Cape, 2xProfessor's Research, 2xCopycat, 2xPoké Ball, 2xCyrus, 1xX Speed, 1xVolkner, 1xGiovanni, 1xSabrina, 1xPotion, 1xPokémon Center Lady
+20:52:42 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Chatot + Tapu Koko ex | Electrike + Tapu Koko ex | Magnezone + Tapu Koko ex | Rotom ex + Tapu Koko ex | Tapu Koko ex | Tapu Koko ex + Vaporeon ex | Tauros ex
+21:02:05 C gen 18/25 best=0.929 (méta 0.959, terrain 0.900, 108 parties) [Alolan Ninetales ex] Water | 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xHitting Hammer, 2xLucky Ice Pop, 2xProfessor's Research, 2xPoké Ball, 1xMetal Core Barrier, 1xSabrina, 1xGiant Cape, 1xLeaf, 1xCyrus, 1xMarlon, 1xTraining Area, 1xRescue Scarf
+21:02:05 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Electrike + Tapu Koko ex | Magnezone + Tapu Koko ex | Munna + Tauros ex | Rotom ex + Tapu Koko ex | Tapu Koko ex | Tapu Koko ex + Vaporeon ex | Tauros ex
+21:11:09 C gen 19/25 best=0.826 (méta 0.752, terrain 0.900, 108 parties) [Tapu Koko ex] Lightning | 2xTapu Koko ex, 2xLucky Ice Pop, 2xGiant Cape, 2xProfessor's Research, 2xPoké Ball, 2xCyrus, 1xX Speed, 1xVolkner, 1xGiovanni, 1xSabrina, 1xPotion, 1xTeam Rocket's Researcher, 1xPokémon Center Lady, 1xCopycat
+21:11:09 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Bounsweet | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Electrike + Tapu Koko ex | Meowth + Tapu Koko ex | Misdreavus + Tapu Koko ex | Rotom ex + Tapu Koko ex | Tapu Koko ex | Tauros ex
+21:20:42 C gen 20/25 best=0.870 (méta 0.839, terrain 0.900, 108 parties) [Mega Lucario ex] Fighting | 2xRiolu, 2xMega Lucario ex, 2xProfessor's Research, 2xPoké Ball, 2xCopycat, 2xGiant Cape, 1xCyrus, 1xSabrina, 1xX Speed, 1xPokémon Center Lady, 1xRed, 1xPotion, 1xGiovanni, 1xLeaf
+21:20:42 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Bounsweet | Alolan Ninetales ex + Goldeen | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Tauros ex | Electrike + Tapu Koko ex | Mega Lucario ex | Meowth + Tapu Koko ex | Rotom ex + Tapu Koko ex | Tapu Koko ex | Tauros ex
+21:30:35 C gen 21/25 best=0.782 (méta 0.739, terrain 0.825, 216 parties) [Tapu Koko ex] Lightning | 2xTapu Koko ex, 2xLucky Ice Pop, 2xGiant Cape, 2xProfessor's Research, 2xPoké Ball, 2xCyrus, 1xX Speed, 1xVolkner, 1xGiovanni, 1xSabrina, 1xPotion, 1xTeam Rocket's Researcher, 1xPokémon Center Lady, 1xCopycat
+21:30:35 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Lechonk | Alolan Ninetales ex + Tauros ex | Clefairy + Tauros ex | Electrike + Tapu Koko ex | Mega Lucario ex | Meowth + Tapu Koko ex | Rotom ex + Tapu Koko ex | Tapu Koko ex
+21:40:33 C gen 22/25 best=0.908 (méta 0.816, terrain 1.000, 108 parties) [Alolan Ninetales ex] Water | 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xLucky Ice Pop, 2xProfessor's Research, 2xPoké Ball, 1xMetal Core Barrier, 1xSabrina, 1xGiant Cape, 1xDiantha, 1xLeaf, 1xCyrus, 1xMarlon, 1xTraining Area, 1xRescue Scarf, 1xLillie
+21:40:33 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Baltoy | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Lechonk | Alolan Ninetales ex + Porygon2 | Alolan Ninetales ex + Tauros ex | Electrike + Tapu Koko ex | Mega Lucario ex | Meowth + Tapu Koko ex | Tapu Koko ex
+21:49:32 C gen 23/25 best=0.842 (méta 0.785, terrain 0.900, 108 parties) [Alolan Ninetales ex + Porygon2] Water | 2xPorygon2, 2xAlolan Ninetales ex, 2xCyrus, 2xLucky Ice Pop, 2xPokémon Center Lady, 2xPorygon, 1xAlolan Vulpix, 1xVolkner, 1xQuick-Grow Extract, 1xPoké Ball, 1xGiovanni, 1xProfessor's Research, 1xGiant Cape, 1xSabrina
+21:49:32 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Baltoy | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Lechonk | Alolan Ninetales ex + Porygon2 | Alolan Ninetales ex + Tauros ex | Machoke + Mega Lucario ex | Mega Lucario ex | Meowth + Tapu Koko ex | Tapu Koko ex | Tapu Koko ex + Victini
+21:58:33 C gen 24/25 best=0.751 (méta 0.703, terrain 0.800, 108 parties) [Alolan Ninetales ex + Tauros ex] Water | 2xPotion, 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xProfessor's Research, 2xPsyduck, 1xTauros ex, 1xSophocles, 1xX Speed, 1xLucky Ice Pop, 1xRed, 1xCopycat, 1xTeam Rocket's Boss, 1xGiant Cape, 1xCyrus, 1xLeaf
+21:58:33 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Baltoy | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Lechonk | Alolan Ninetales ex + Porygon2 | Alolan Ninetales ex + Tauros ex | Alolan Ninetales ex + Wurmple | Mega Lucario ex | Meowth + Tapu Koko ex | Tapu Koko ex
+22:07:12 C gen 25/25 best=0.926 (méta 0.952, terrain 0.900, 108 parties) [Alolan Ninetales ex + Lechonk] Water | 2xAlolan Vulpix, 2xAlolan Ninetales ex, 2xLucky Ice Pop, 2xPoké Ball, 2xProfessor's Research, 1xLechonk, 1xSabrina, 1xLeaf, 1xRescue Scarf, 1xMarlon, 1xCyrus, 1xMetal Core Barrier, 1xDiantha, 1xHitting Hammer, 1xGiant Cape
+22:07:12 C   archétypes vivants: Alolan Ninetales ex | Alolan Ninetales ex + Baltoy | Alolan Ninetales ex + Greninja ex | Alolan Ninetales ex + Lechonk | Alolan Ninetales ex + Porygon2 | Alolan Ninetales ex + Tauros ex | Alolan Ninetales ex + Wurmple | Hoopa ex | Mega Lucario ex | Tapu Koko ex
+22:08:02 D: Alolan Ninetales ex + Lechonk -> 0.218 (918 parties)
+22:08:59 D: Alolan Ninetales ex + Greninja ex -> 0.663 (918 parties)
+22:10:01 D: Tapu Koko ex -> 0.516 (918 parties)
+22:11:14 D: Mega Lucario ex -> 0.524 (918 parties)
+22:11:58 D: Alolan Ninetales ex + Porygon2 -> 0.145 (918 parties)
+22:12:55 D: Alolan Ninetales ex -> 0.167 (1080 parties)
+22:13:31 D: réf altaria -> 0.988
+22:13:53 D: réf lucario -> 0.694
+22:14:16 D: réf butterfree -> 0.257
+22:14:48 D: réf vespiquen -> 0.637
+22:15:24 D: réf suicune -> 0.498
+22:16:18 D: réf dedenne -> 0.620
+22:17:00 D: réf rayquaza -> 0.475
+22:17:21 D: réf hydreigon -> 0.460
+22:17:45 D: réf hoopa -> 0.742
+22:18:10 D: réf blaziken -> 0.472
+22:18:58 D: réf magnezone -> 0.480
+22:19:24 D: réf altaria-greninja -> 0.487
+22:19:50 D: réf weezing -> 0.634
+22:20:43 D: réf charizard -> 0.441
+22:20:58 D: réf manectric -> 0.892
+22:21:26 D: réf sceptile-greninja -> 0.490
+22:21:45 D: réf flygon -> 0.325
+22:21:45 rapport écrit: RESULTATS_D.md
+22:21:45 FINI en 5.0 h
